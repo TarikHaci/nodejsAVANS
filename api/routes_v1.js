@@ -17,7 +17,6 @@ routes.post('/hello', function(req, res){
 
 	console.dir(body);
 
-	res.contentType('application/json');
 	res.status(200);
 	res.json(mijnObject);
 });
@@ -27,7 +26,6 @@ routes.delete('/hello', function(req, res){
 
 	console.dir(body);
 	
-	res.contentType('application/json');
 	res.status(200);
 	res.json(mijnObject);
 });
@@ -37,15 +35,17 @@ routes.put('/hello', function(req, res){
 
 	console.dir(body);
 	
-	res.contentType('application/json');
 	res.status(200);
 	res.json(mijnObject);
 });
 
 routes.get('/goodbye', function(req, res){
-	res.contentType('application/json');
 	res.status(200);
-	res.json({ 'tekst' : 'Goodbye!'});
+	res.json({ 'tekst' : 'Goodbye get!'});
+});
+
+routes.get('/hello/error', function(req, res, next){
+	next('HIER TREEDT EEN ERROR OP');
 });
 
 module.exports = routes;
